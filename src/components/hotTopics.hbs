@@ -1,0 +1,17 @@
+<section class="hot-topics">
+  <h2 class="hot-topics__title">Tendencias</h2>
+
+  <ul class="hot-topics__list">
+    {{#each this}}
+      <li class="hot-topics__item">
+        <a
+          href="{{url}}"
+          target="{{target}}"
+          class="hot-topics__link"
+        >
+          {{title}}
+        </a>
+      </li>
+    {{/each}}
+  </ul>
+</section>

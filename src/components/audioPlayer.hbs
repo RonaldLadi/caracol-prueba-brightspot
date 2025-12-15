@@ -1,0 +1,11 @@
+{{#each this}}
+  <div class="audio-player">
+    <audio controls src="{{audioUrl}}">
+      Tu navegador no soporta audio HTML5
+    </audio>
+
+    <p class="audio-title">
+      {{audioTitle}}
+    </p>
+  </div>
+{{/each}}

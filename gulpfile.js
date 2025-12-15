@@ -50,44 +50,54 @@ function styles() {
 }
 
 // Compila Handlebars a funciones JS
+const merge = require('merge-stream');
+
 function templates() {
-    return gulp
-      .src(paths.templates.src)
-      .pipe(handlebars())
-      .pipe(wrap(function (data) {
-        const filePath = data.file.relative.replace(/\\/g, '/');
-  
-        // 👉 Si es un componente → partial
-        if (filePath.startsWith('components/')) {
-          const partialName = filePath.replace('.js', '').replace('.hbs', '');
-  
-          return `
-            Handlebars.registerPartial(
-              '${partialName}',
-              Handlebars.template(${data.contents})
-            );
-          `;
-        }
-  
-        // 👉 Si es template principal
-        const templateName = filePath
-          .replace('templates/', '')
-          .replace('.js', '')
-          .replace('.hbs', '');
-  
-        return `
-          this.Templates = this.Templates || {};
-          this.Templates['${templateName}'] =
-            Handlebars.template(${data.contents});
-        `;
-      }))
-      .pipe(concat('templates.js'))
-      .pipe(gulp.dest('dist/js/'))
-      .pipe(browserSync.stream());
-  }
-  
-  
-  
+
+  // 🔹 COMPONENTS → partials
+  const components = gulp
+    .src('src/components/**/*.hbs')
+    .pipe(handlebars())
+    .pipe(wrap(function (data) {
+      const filePath = data.file.relative.replace(/\\/g, '/');
+
+      const partialName = filePath
+        .replace('.js', '')
+        .replace('.hbs', '');
+
+      return `
+        Handlebars.registerPartial(
+          '${partialName}',
+          Handlebars.template(${data.contents})
+        );
+      `;
+    }));
+
+  // 🔹 TEMPLATES → templates principales
+  const templates = gulp
+    .src('src/templates/**/*.hbs')
+    .pipe(handlebars())
+    .pipe(wrap(function (data) {
+      const templateName = data.file.relative
+        .replace(/\\/g, '/')
+        .replace('.js', '')
+        .replace('.hbs', '');
+
+      return `
+        this.Templates = this.Templates || {};
+        this.Templates['${templateName}'] =
+          Handlebars.template(${data.contents});
+      `;
+    }));
+
+  // 🔹 Unimos ambos streams
+  return merge(components, templates)
+    .pipe(concat('templates.js'))
+    .pipe(gulp.dest('dist/js/'))
+    .pipe(browserSync.stream());
+}
+
+
 
 // Copia JS
 function scripts() {

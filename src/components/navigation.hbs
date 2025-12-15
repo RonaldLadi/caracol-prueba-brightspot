@@ -1,0 +1,16 @@
+<nav class="navigation">
+  {{#each this}}
+    <ul class="navigation__list">
+      {{#each items}}
+        <li class="navigation__item">
+          <a
+            href="{{href}}"
+            class="navigation__link{{#if isCurrent}} is-active{{/if}}"
+          >
+            {{text}}
+          </a>
+        </li>
+      {{/each}}
+    </ul>
+  {{/each}}
+</nav>

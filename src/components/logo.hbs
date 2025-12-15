@@ -1,0 +1,14 @@
+<div class="logo">
+  {{#each this}}
+    <a href="{{href}}" class="logo__link">
+      <img
+        src="{{image.src}}"
+        alt="{{alt}}"
+        width="{{image.width}}"
+        height="{{image.height}}"
+        class="logo__image"
+        loading="lazy"
+      />
+    </a>
+  {{/each}}
+</div>

@@ -1,0 +1,17 @@
+<nav class="breadcrumbs" aria-label="Breadcrumb">
+  <ol class="breadcrumbs__list">
+    {{#each this}}
+      <li class="breadcrumbs__item">
+        {{#if href}}
+          <a href="{{href}}" class="breadcrumbs__link">
+            {{body}}
+          </a>
+        {{else}}
+          <span class="breadcrumbs__current">
+            {{body}}
+          </span>
+        {{/if}}
+      </li>
+    {{/each}}
+  </ol>
+</nav>

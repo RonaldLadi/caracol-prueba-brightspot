@@ -1,0 +1,23 @@
+<section class="page-lead">
+  {{#each this}}
+    <figure class="page-lead__media">
+      <picture>
+        {{#if image.webpSrc}}
+          <source
+            srcset="{{image.webpSrcset}}{{#unless image.webpSrcset}}{{image.webpSrc}}{{/unless}}"
+            type="image/webp"
+          >
+        {{/if}}
+
+        <img
+          src="{{image.src}}"
+          {{#if image.srcset}}srcset="{{image.srcset}}"{{/if}}
+          width="{{image.width}}"
+          height="{{image.height}}"
+          alt="{{alt}}"
+          loading="lazy"
+        >
+      </picture>
+    </figure>
+  {{/each}}
+</section>

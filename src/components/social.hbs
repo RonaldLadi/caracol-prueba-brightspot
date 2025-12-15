@@ -1,0 +1,18 @@
+<div class="social">
+  {{#each this}}
+    <ul class="social__list">
+      {{#each items}}
+        <li class="social__item social__item--{{socialService}}">
+          <a
+            href="{{href}}"
+            class="social__link"
+            target="_blank"
+            rel="noopener"
+          >
+            {{body}}
+          </a>
+        </li>
+      {{/each}}
+    </ul>
+  {{/each}}
+</div>
