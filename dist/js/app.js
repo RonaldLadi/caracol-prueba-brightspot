@@ -1,21 +1,43 @@
-document.addEventListener("DOMContentLoaded", function () {
-  Handlebars.registerHelper('includes', function (value, search) {
-    if (!value) return false;
-    return value.indexOf(search) !== -1;
-  });
+class App {
+  constructor() {
+    this.dataUrl = './data/data.json';
+    this.appContainer = document.getElementById('app');
+    this.mainTemplate = Templates['main'];
+  }
 
-  Handlebars.registerHelper('eq', function (a, b) {
-    return a === b;
-  });
+  init() {
+    this.registerHandlebarsHelpers();
+    this.loadData();
+  }
 
-  fetch("./data/data.json")
-    .then(response => response.json())
-    .then(data => {
-
-      const template = Templates["main"];
-      const html = template(data);
-
-      document.getElementById("app").innerHTML = html;
+  registerHandlebarsHelpers() {
+    Handlebars.registerHelper('includes', (value, search) => {
+      if (!value) return false;
+      return value.indexOf(search) !== -1;
     });
 
+    Handlebars.registerHelper('eq', (a, b) => a === b);
+  }
+
+  async loadData() {
+    try {
+      const response = await fetch(this.dataUrl);
+      const data = await response.json();
+      this.render(data);
+    } catch (error) {
+      console.error('Error loading data.json:', error);
+    }
+  }
+
+  render(data) {
+    if (!this.mainTemplate || !this.appContainer) return;
+
+    const html = this.mainTemplate(data);
+    this.appContainer.innerHTML = html;
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const app = new App();
+  app.init();
 });

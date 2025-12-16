@@ -3,22 +3,19 @@
   margin: 0;
   padding: 0;
 
+  @media (min-width: @desktop) {
+    margin-bottom: 0;
+  }
+
   &-media {
     width: 100%;
     margin: 0;
-
-    picture,
-    img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    img {
-      object-fit: cover;
-    }
   }
-  @media (min-width: @desktop) {
-    margin-bottom: 0;
+  
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
   }
 }
