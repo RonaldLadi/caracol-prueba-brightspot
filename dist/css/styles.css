@@ -1,6 +1,360 @@
-.jonathan-es-gay {
+/* =====================
+   Base
+===================== */
+/* Colors */
+/* Fonts */
+/* Spacing scale */
+/* Breakpoints */
+/* Layout */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  color: #000;
+  font-size: 16px;
+  line-height: 1.4;
+  margin: 0;
+}
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  color: #000;
+  font-size: 16px;
+  line-height: 1.5;
+}
+h1,
+h2,
+h3 {
+  font-weight: 700;
+  line-height: 1.2;
+}
+p {
+  margin: 0 0 8px;
+  line-height: 1.6;
+}
+/* =====================
+   Layouts
+===================== */
+header {
   display: flex;
-  border: 1px solid red;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 16px;
+}
+@media (min-width: 1024px) {
+  header {
+    max-width: 85%;
+    margin: 0 auto;
+  }
+}
+/* Headband */
+.headband {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 4px 16px;
+  background-color: #000247;
+  color: #fff;
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+}
+@media (min-width: 1024px) {
+  .content {
+    max-width: 85%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 32px;
+    align-items: start;
+  }
+}
+/* =====================
+   Components
+===================== */
+.navigation {
+  position: relative;
+  display: flex;
+  align-items: center;
+  /* DESKTOP */
+}
+.navigation__toggle {
+  width: 32px;
+  height: 24px;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0;
+}
+.navigation__toggle span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background: #000247;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+.navigation__list {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 220px;
+  background: #fff;
+  list-style: none;
+  padding: 16px;
+  margin: 0;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+}
+.navigation.is-open .navigation__list {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+@media (min-width: 1024px) {
+  .navigation__toggle {
+    display: none;
+  }
+  .navigation__list {
+    position: static;
+    display: flex;
+    gap: 16px;
+    width: auto;
+    padding: 0;
+    box-shadow: none;
+    opacity: 1;
+    pointer-events: auto;
+    transform: none;
+    background: transparent;
+  }
+}
+.logo {
+  display: flex;
+  align-items: center;
+}
+.logo__link {
+  display: inline-flex;
+  align-items: center;
+}
+.logo__image {
+  max-height: 32px;
+  width: auto;
+}
+@media (min-width: 1024px) {
+  .logo__image {
+    max-height: 40px;
+  }
+}
+.hot-topics {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow-x: auto;
+}
+.hot-topics__title {
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.hot-topics__list {
+  display: flex;
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.hot-topics__item {
+  white-space: nowrap;
+}
+.hot-topics__link {
+  font-size: 12px;
+  color: inherit;
+  text-decoration: none;
+}
+.hot-topics__link:hover {
+  text-decoration: underline;
+}
+@media (min-width: 1024px) {
+  .hot-topics {
+    overflow-x: visible;
+    max-width: 85%;
+  }
+}
+.social__list {
+  display: flex;
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.social__link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  color: #fff;
+  text-decoration: none;
+}
+.social__icon {
+  width: 16px;
+  height: 16px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+.page-lead {
+  width: 100%;
+  margin-bottom: 16px;
+}
+.page-lead-media {
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.page-lead-media picture,
+.page-lead-media img {
+  width: 100%;
+  display: block;
+}
+.page-lead-media img {
+  object-fit: cover;
+}
+@media (min-width: 1024px) {
+  .page-lead {
+    margin-bottom: 0;
+  }
+}
+.breadcrumbs {
+  width: 100%;
+  padding: 4px 16px;
+  font-size: 12px;
+  overflow-x: auto;
+}
+.breadcrumbs-list {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+}
+.breadcrumbs-item {
+  display: flex;
+  align-items: center;
+}
+.breadcrumbs-item:not(:last-child)::after {
+  content: "›";
+  margin: 0 4px;
+  color: #999;
+}
+.breadcrumbs-link {
+  color: #000247;
+  text-decoration: none;
+}
+.breadcrumbs-link:hover {
+  text-decoration: underline;
+}
+.breadcrumbs-current {
+  color: #666;
+  font-weight: 600;
+}
+@media (min-width: 1024px) {
+  .breadcrumbs {
+    max-width: 85%;
+    margin: 0 auto;
+  }
+}
+.lead {
+  margin: 0;
+  width: 100%;
+}
+.lead img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+.headline {
+  font-size: 22px;
+  line-height: 1.2;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+@media (min-width: 1024px) {
+  .headline {
+    font-size: 26px;
+  }
+}
+.subheadline {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #666;
+  margin-bottom: 16px;
+}
+.audio-player {
+  padding: 8px;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  margin-bottom: 16px;
+}
+.audio-player audio {
+  width: 100%;
+  display: block;
+}
+.audio-player .audio-title {
+  margin-top: 4px;
+  font-size: 14px;
+  font-weight: 600;
+}
+@media (min-width: 1024px) {
+  .audio-player {
+    background-color: transparent;
+    padding: 0;
+  }
+}
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.actions button {
+  width: 100%;
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #000;
+  border-radius: 8px;
+  background: transparent;
+  cursor: pointer;
+}
+@media (min-width: 1024px) {
+  .actions {
+    flex-direction: row;
+  }
+  .actions button {
+    width: auto;
+  }
 }
 
 /*# sourceMappingURL=styles.css.map */

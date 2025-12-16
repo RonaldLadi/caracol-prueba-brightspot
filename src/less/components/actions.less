@@ -1,0 +1,24 @@
+.actions {
+    display: flex;
+    flex-direction: column;
+    gap: @space-sm;
+  
+    button {
+      width: 100%;
+      padding: @space-sm;
+      font-size: 14px;
+      border: 1px solid @black;
+      border-radius: 8px;
+      background: transparent;
+      cursor: pointer;
+    }
+  
+    @media (min-width: @desktop) {
+      flex-direction: row;
+  
+      button {
+        width: auto;
+      }
+    }
+  }
+  

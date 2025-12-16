@@ -1,4 +1,22 @@
-.jonathan-es-gay {
+header {
     display: flex;
-    border: 1px solid red;
+    align-items: center;
+    justify-content: space-between;
+    padding: @space-sm @space-md;
+
+    @media (min-width: @desktop) {
+        max-width: @wrapper-main;
+        margin: 0 auto;
+    }
+}
+
+/* Headband */
+.headband {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: @space-sm;
+    padding: @space-xs @space-md;
+    background-color: @blue-dark;
+    color: @white;
 }

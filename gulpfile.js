@@ -92,9 +92,9 @@ function templates() {
 
   // 🔹 Unimos ambos streams
   return merge(components, templates)
-    .pipe(concat('templates.js'))
-    .pipe(gulp.dest('dist/js/'))
-    .pipe(browserSync.stream());
+  .pipe(concat('templates.js'))
+  .pipe(gulp.dest('dist/js/'))
+  .on('end', browserSync.reload);
 }
 
 
@@ -129,7 +129,11 @@ function dev() {
   });
 
   gulp.watch('src/less/**/*.less', styles);
-  gulp.watch('src/templates/**/*.hbs', templates);
+  gulp.watch(
+    ['src/templates/**/*.hbs', 'src/components/**/*.hbs'],
+    templates
+  );
+  
   gulp.watch(paths.scripts.src, scripts);
   gulp.watch('index.html', html);
   gulp.watch(paths.data.src, data);
