@@ -1,12 +1,16 @@
 {{#each this}}
-  <div class="audio-player">
-    <audio controls src="{{audioUrl}}">
-      Tu navegador no soporta audio HTML5
-    </audio>
+<div class="audio-player">
+  <button class="audio-player__btn" aria-label="Reproducir audio">
+    ▶
+  </button>
 
-    <p class="audio-title">
-      {{audioTitle}}
-      {{audioDuration}}
-    </p>
+  <div class="audio-player__info">
+    <span class="audio-player__title">Escuchar audio</span>
+    <span class="audio-player__meta">
+      {{audioTitle}} · {{audioDuration}}
+    </span>
   </div>
+
+  <audio src="{{audioUrl}}"></audio>
+</div>
 {{/each}}

@@ -1,15 +1,16 @@
 .page-lead {
   width: 100%;
-  margin-bottom: @space-md;
+  margin: 0;
+  padding: 0;
 
   &-media {
     width: 100%;
-    border-radius: 12px;
-    overflow: hidden;
+    margin: 0;
 
     picture,
     img {
       width: 100%;
+      height: auto;
       display: block;
     }
 
@@ -17,7 +18,6 @@
       object-fit: cover;
     }
   }
-
   @media (min-width: @desktop) {
     margin-bottom: 0;
   }

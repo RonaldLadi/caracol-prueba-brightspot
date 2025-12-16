@@ -43,6 +43,36 @@
         );
       
 
+        Handlebars.registerPartial(
+          'audioPlayer',
+          Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
+    var helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=container.hooks.helperMissing, alias3="function", alias4=container.escapeExpression, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+        if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+          return parent[propertyName];
+        }
+        return undefined
+    };
+
+  return "<div class=\"audio-player\">\n  <button class=\"audio-player__btn\" aria-label=\"Reproducir audio\">\n    ▶\n  </button>\n\n  <div class=\"audio-player__info\">\n    <span class=\"audio-player__title\">Escuchar audio</span>\n    <span class=\"audio-player__meta\">\n      "
+    + alias4(((helper = (helper = lookupProperty(helpers,"audioTitle") || (depth0 != null ? lookupProperty(depth0,"audioTitle") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"audioTitle","hash":{},"data":data,"loc":{"start":{"line":10,"column":6},"end":{"line":10,"column":20}}}) : helper)))
+    + " · "
+    + alias4(((helper = (helper = lookupProperty(helpers,"audioDuration") || (depth0 != null ? lookupProperty(depth0,"audioDuration") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"audioDuration","hash":{},"data":data,"loc":{"start":{"line":10,"column":23},"end":{"line":10,"column":40}}}) : helper)))
+    + "\n    </span>\n  </div>\n\n  <audio src=\""
+    + alias4(((helper = (helper = lookupProperty(helpers,"audioUrl") || (depth0 != null ? lookupProperty(depth0,"audioUrl") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"audioUrl","hash":{},"data":data,"loc":{"start":{"line":14,"column":14},"end":{"line":14,"column":26}}}) : helper)))
+    + "\"></audio>\n</div>\n";
+},"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data) {
+    var stack1, lookupProperty = container.lookupProperty || function(parent, propertyName) {
+        if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
+          return parent[propertyName];
+        }
+        return undefined
+    };
+
+  return ((stack1 = lookupProperty(helpers,"each").call(depth0 != null ? depth0 : (container.nullContext || {}),depth0,{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data,"loc":{"start":{"line":1,"column":0},"end":{"line":16,"column":9}}})) != null ? stack1 : "");
+},"useData":true})
+        );
+      
+
         this.Templates = this.Templates || {};
         this.Templates['main'] =
           Handlebars.template({"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data) {
@@ -74,36 +104,6 @@
     + ((stack1 = container.invokePartial(lookupProperty(partials,"actions"),(depth0 != null ? lookupProperty(depth0,"actions") : depth0),{"name":"actions","data":data,"indent":"  ","helpers":helpers,"partials":partials,"decorators":container.decorators})) != null ? stack1 : "")
     + "</div>";
 },"usePartial":true,"useData":true});
-      
-
-        Handlebars.registerPartial(
-          'audioPlayer',
-          Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
-    var helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=container.hooks.helperMissing, alias3="function", alias4=container.escapeExpression, lookupProperty = container.lookupProperty || function(parent, propertyName) {
-        if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
-          return parent[propertyName];
-        }
-        return undefined
-    };
-
-  return "  <div class=\"audio-player\">\n    <audio controls src=\""
-    + alias4(((helper = (helper = lookupProperty(helpers,"audioUrl") || (depth0 != null ? lookupProperty(depth0,"audioUrl") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"audioUrl","hash":{},"data":data,"loc":{"start":{"line":3,"column":25},"end":{"line":3,"column":37}}}) : helper)))
-    + "\">\n      Tu navegador no soporta audio HTML5\n    </audio>\n\n    <p class=\"audio-title\">\n      "
-    + alias4(((helper = (helper = lookupProperty(helpers,"audioTitle") || (depth0 != null ? lookupProperty(depth0,"audioTitle") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"audioTitle","hash":{},"data":data,"loc":{"start":{"line":8,"column":6},"end":{"line":8,"column":20}}}) : helper)))
-    + "\n      "
-    + alias4(((helper = (helper = lookupProperty(helpers,"audioDuration") || (depth0 != null ? lookupProperty(depth0,"audioDuration") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"audioDuration","hash":{},"data":data,"loc":{"start":{"line":9,"column":6},"end":{"line":9,"column":23}}}) : helper)))
-    + "\n    </p>\n  </div>\n";
-},"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data) {
-    var stack1, lookupProperty = container.lookupProperty || function(parent, propertyName) {
-        if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
-          return parent[propertyName];
-        }
-        return undefined
-    };
-
-  return ((stack1 = lookupProperty(helpers,"each").call(depth0 != null ? depth0 : (container.nullContext || {}),depth0,{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data,"loc":{"start":{"line":1,"column":0},"end":{"line":12,"column":9}}})) != null ? stack1 : "");
-},"useData":true})
-        );
       
 
         Handlebars.registerPartial(

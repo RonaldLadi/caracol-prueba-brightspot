@@ -1,23 +1,45 @@
 .audio-player {
-    padding: @space-sm;
-    background-color: #f5f5f5;
-    border-radius: 10px;
-    margin-bottom: @space-md;
-  
-    audio {
-      width: 100%;
-      display: block;
-    }
-  
-    .audio-title {
-      margin-top: @space-xs;
-      font-size: 14px;
-      font-weight: 600;
-    }
-  
-    @media (min-width: @desktop) {
-      background-color: transparent;
-      padding: 0;
-    }
+  display: flex;
+  align-items: center;
+  gap: @space-sm;
+  padding: @space-sm @space-md;
+  background-color: @yellow;
+  border-radius: 999px;
+  margin: auto;
+
+  &__btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 0;
+    background-color: #111;
+    color: @yellow;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
   }
-  
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+  }
+
+  &__title {
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  &__meta {
+    font-size: 12px;
+    opacity: 0.8;
+  }
+
+  @media (min-width: @desktop) {
+    margin-top: @space-sm;
+  }
+}
