@@ -2,10 +2,14 @@
   display: flex;
   align-items: center;
   gap: @space-sm;
-  padding: @space-sm @space-md;
+  padding: 10px @space-md;
   background-color: @yellow;
   border-radius: 999px;
-  margin: auto;
+  width: 60%;
+
+  @media (min-width: @desktop) {
+    width: 40%;
+  }
 
   &__btn {
     width: 36px;
@@ -37,9 +41,5 @@
   &__meta {
     font-size: 12px;
     opacity: 0.8;
-  }
-
-  @media (min-width: @desktop) {
-    margin-top: @space-sm;
   }
 }

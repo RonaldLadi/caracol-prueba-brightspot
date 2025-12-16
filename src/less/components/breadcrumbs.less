@@ -1,8 +1,14 @@
+@import "../base/variables.less";
+
 .breadcrumbs {
   width: 100%;
-  padding: @space-xs @space-md;
+  padding: 10px 20px;
   font-size: 12px;
-  overflow-x: auto;
+
+  @media screen and (min-width: @desktop) {
+    max-width: @wrapper-main;
+    margin: 10px auto;
+  }
 
   &-list {
     display: flex;
@@ -16,12 +22,24 @@
   &-item {
     display: flex;
     align-items: center;
+    min-width: 0; 
 
     &:not(:last-child)::after {
       content: ">";
       margin: 0 @space-xs;
       color: #999;
+      flex-shrink: 0;
     }
+  }
+
+  &-link,
+  &-current {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-width: 0;
+    max-width: 200px; 
+    display: block;
   }
 
   &-link {

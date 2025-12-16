@@ -1,28 +1,38 @@
 .hot-topics {
-  display: flex;
-  align-items: center;
-  gap: @space-sm;
-  overflow-x: auto;
-
-  &__title {
+    display: flex;
+    align-items: center;
+    gap: @space-sm;
+    overflow-x: auto;
+  
+    &__title {
       font-size: 12px;
       font-weight: bold;
       white-space: nowrap;
-  }
-
-  &__list {
+      flex-shrink: 0;
+    }
+  
+    &__list {
       display: flex;
       gap: @space-sm;
       list-style: none;
       margin: 0;
       padding: 0;
-  }
-
-  &__item {
+      min-width: 0; 
+    }
+  
+    &__item {
+      display: flex;
+      min-width: 0; 
       white-space: nowrap;
-  }
-
-  &__link {
+    }
+  
+    &__link {
       font-size: 12px;
+      display: block;
+      max-width: 160px; 
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
   }
-}
+  

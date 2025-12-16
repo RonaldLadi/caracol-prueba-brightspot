@@ -1,16 +1,20 @@
 document.addEventListener("DOMContentLoaded", function () {
+  Handlebars.registerHelper('includes', function (value, search) {
+    if (!value) return false;
+    return value.indexOf(search) !== -1;
+  });
+
+  Handlebars.registerHelper('eq', function (a, b) {
+    return a === b;
+  });
 
   fetch("./data/data.json")
     .then(response => response.json())
     .then(data => {
 
-      // Usamos el template correcto
       const template = Templates["main"];
-
-      // Enviamos TODO el JSON al template
       const html = template(data);
 
-      // Inyectamos el resultado en el #app
       document.getElementById("app").innerHTML = html;
     });
 

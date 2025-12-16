@@ -1,23 +1,46 @@
-.actions {
-  display: flex;
-  flex-direction: column;
-  gap: @space-sm;
-
-  button {
-    width: 100%;
-    padding: @space-sm;
-    font-size: 14px;
-    border: 1px solid @black;
-    border-radius: 8px;
-    background: transparent;
-    cursor: pointer;
-  }
+.component-action {
+  margin-top: 10px;
 
   @media (min-width: @desktop) {
+    justify-content: flex-start;
+  }
+
+  .actions-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: @black;
+  }
+
+  .actions {
+    display: flex;
+    gap: @space-lg;
     flex-direction: row;
 
-    button {
-      width: auto;
+    &__btn {
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+    }
+
+    &__iconFb {
+      width: 40px;
+      height: 40px;
+      fill: blue;
+    }
+
+    &__iconTweet {
+      width: 40px;
+      height: 40px;
+      fill: #1c9deb;
+    }
+
+    &__iconWhatsapp {
+      width: 40px;
+      height: 40px;
     }
   }
 }

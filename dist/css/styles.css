@@ -1,6 +1,3 @@
-/* =====================
-   Base
-===================== */
 /* Colors */
 /* Fonts */
 /* Spacing scale */
@@ -43,39 +40,43 @@ p {
   margin: 0 0 8px;
   line-height: 1.6;
 }
-/* =====================
-   Layouts
-===================== */
 header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 8px 16px;
 }
-@media (min-width: 1024px) {
+@media screen and (min-width: 1024px) {
   header {
     max-width: 85%;
-    margin: 0 auto;
+    margin: auto;
   }
 }
-/* Headband */
 .headband {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
   padding: 4px 16px;
   background-color: #000247;
   color: #fff;
 }
-.content {
+.headband .headband-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+@media screen and (min-width: 1024px) {
+  .headband .headband-content {
+    max-width: 85%;
+    margin: auto;
+  }
+}
+.content-grid {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  padding: 16px;
+  padding: 0 16px;
 }
 @media (min-width: 1024px) {
-  .content {
+  .content-grid {
     max-width: 85%;
     margin: 0 auto;
     display: grid;
@@ -84,13 +85,12 @@ header {
     align-items: start;
   }
 }
-/* =====================
-   Components
-===================== */
 .navigation {
   position: relative;
   display: flex;
   align-items: center;
+  /* 🔝 Asegura que el menú flote sobre todo */
+  z-index: 1000;
 }
 .navigation__toggle {
   width: 32px;
@@ -112,19 +112,39 @@ header {
   transition: all 0.3s ease;
 }
 .navigation__list {
+  /* 🔑 POSICIÓN CORRECTA */
   position: absolute;
-  top: 100%;
-  right: 0;
-  width: 220px;
+  top: calc(100% + 12px);
+  left: 0;
+  width: 260px;
   background: #fff;
   list-style: none;
-  padding: 16px;
+  padding: 16px 0;
   margin: 0;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
+  border-radius: 8px;
+  /* Estado cerrado */
   opacity: 0;
+  transform: translateY(-8px);
   pointer-events: none;
-  transform: translateY(-10px);
-  transition: all 0.3s ease;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+.navigation__item {
+  padding: 0;
+}
+.navigation__link {
+  display: block;
+  padding: 12px 20px;
+  color: #222;
+  text-decoration: none;
+  font-size: 14px;
+}
+.navigation__link:hover {
+  background: #f5f5f5;
+}
+.navigation__link.is-active {
+  font-weight: 600;
+  background: #eef3ff;
 }
 .navigation.is-open .navigation__list {
   opacity: 1;
@@ -134,6 +154,12 @@ header {
 .logo {
   display: flex;
   align-items: center;
+}
+@media screen and (min-width: 1024px) {
+  .logo {
+    position: absolute;
+    left: 180px;
+  }
 }
 .logo__link {
   display: inline-block;
@@ -152,6 +178,7 @@ header {
   font-size: 12px;
   font-weight: bold;
   white-space: nowrap;
+  flex-shrink: 0;
 }
 .hot-topics__list {
   display: flex;
@@ -159,35 +186,39 @@ header {
   list-style: none;
   margin: 0;
   padding: 0;
+  min-width: 0;
 }
 .hot-topics__item {
+  display: flex;
+  min-width: 0;
   white-space: nowrap;
 }
 .hot-topics__link {
   font-size: 12px;
+  display: block;
+  max-width: 160px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .social__list {
   display: flex;
-  gap: 10px;
-  list-style: none;
   margin: 0;
   padding: 0;
+  list-style: none;
 }
 .social__link {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 28px;
-  height: 28px;
-  color: #fff;
-  text-decoration: none;
+  width: 32px;
+  height: 32px;
 }
 .social__icon {
   width: 16px;
   height: 16px;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
+  fill: #fff;
+  display: block;
 }
 .page-lead {
   width: 100%;
@@ -214,9 +245,14 @@ header {
 }
 .breadcrumbs {
   width: 100%;
-  padding: 4px 16px;
+  padding: 10px 20px;
   font-size: 12px;
-  overflow-x: auto;
+}
+@media screen and (min-width: 1024px) {
+  .breadcrumbs {
+    max-width: 85%;
+    margin: 10px auto;
+  }
 }
 .breadcrumbs-list {
   display: flex;
@@ -229,11 +265,22 @@ header {
 .breadcrumbs-item {
   display: flex;
   align-items: center;
+  min-width: 0;
 }
 .breadcrumbs-item:not(:last-child)::after {
   content: ">";
   margin: 0 4px;
   color: #999;
+  flex-shrink: 0;
+}
+.breadcrumbs-link,
+.breadcrumbs-current {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+  max-width: 200px;
+  display: block;
 }
 .breadcrumbs-link {
   color: #000247;
@@ -259,9 +306,7 @@ header {
 }
 .headline {
   font-size: 22px;
-  line-height: 1.2;
   font-weight: 700;
-  margin-bottom: 8px;
 }
 @media (min-width: 1024px) {
   .headline {
@@ -278,10 +323,15 @@ header {
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 8px 16px;
+  padding: 10px 16px;
   background-color: #ffd340;
   border-radius: 999px;
-  margin: auto;
+  width: 60%;
+}
+@media (min-width: 1024px) {
+  .audio-player {
+    width: 40%;
+  }
 }
 .audio-player__btn {
   width: 36px;
@@ -311,32 +361,46 @@ header {
   font-size: 12px;
   opacity: 0.8;
 }
+.component-action {
+  margin-top: 10px;
+}
 @media (min-width: 1024px) {
-  .audio-player {
-    margin-top: 8px;
+  .component-action {
+    justify-content: flex-start;
   }
 }
-.actions {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-.actions button {
-  width: 100%;
-  padding: 8px;
+.component-action .actions-title {
   font-size: 14px;
-  border: 1px solid #000;
-  border-radius: 8px;
+  font-weight: 600;
+  color: #000;
+}
+.component-action .actions {
+  display: flex;
+  gap: 24px;
+  flex-direction: row;
+}
+.component-action .actions__btn {
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
   background: transparent;
   cursor: pointer;
 }
-@media (min-width: 1024px) {
-  .actions {
-    flex-direction: row;
-  }
-  .actions button {
-    width: auto;
-  }
+.component-action .actions__iconFb {
+  width: 40px;
+  height: 40px;
+  fill: blue;
+}
+.component-action .actions__iconTweet {
+  width: 40px;
+  height: 40px;
+  fill: #1c9deb;
+}
+.component-action .actions__iconWhatsapp {
+  width: 40px;
+  height: 40px;
 }
 
 /*# sourceMappingURL=styles.css.map */

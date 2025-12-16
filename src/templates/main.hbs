@@ -4,25 +4,24 @@
 </header>
 
 <div class="headband">
-  {{> hotTopics hotTopics}}
-  {{> social social}}
+  <div class="headband-content">
+    {{> hotTopics hotTopics}}
+    {{> social social}}
+  </div>
 </div>
 
 <div class="pageLead">
   {{> pageLead pageLead}}
 </div>
 
-<div class="breadcrumbs">
-  {{> breadcrumbs breadcrumbs}}
-</div>
+{{> breadcrumbs breadcrumbs}}
 
-<div class="content">
+<div class="content-grid">
   {{> lead lead}}
-
-  {{> headline headline}}
-  {{> subheadline subHeadline}}
-
-  {{> audioPlayer audioPlayer}}
-
-  {{> actions actions}}
+  <div class="grid-right">
+    {{> headline headline}}
+    {{> subheadline subHeadline}}
+    {{> audioPlayer audioPlayer}}
+    {{> actions actions}}
+  </div>
 </div>
