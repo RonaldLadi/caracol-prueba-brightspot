@@ -33,7 +33,7 @@ Build a web page that:
 ---
 ### 📁 Project structure
 
-
+```
 └── src
     ├── components
     │   ├── headline.hbs
@@ -77,7 +77,7 @@ Build a web page that:
     └── templates
         ├── card.hbs
         └── main.hbs
-
+```
 ---
 ## 📌 Key folders
 
