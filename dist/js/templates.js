@@ -1,11 +1,4 @@
 
-        this.Templates = this.Templates || {};
-        this.Templates['card'] =
-          Handlebars.template({"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data) {
-    return "";
-},"useData":true});
-      
-
         Handlebars.registerPartial(
           'actions',
           Handlebars.template({"1":function(container,depth0,helpers,partials,data) {

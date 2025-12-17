@@ -9,7 +9,6 @@ const del = require('del');
 const rename = require('gulp-rename');
 const concat = require('gulp-concat');
 
-// Rutas
 const paths = {
   styles: {
     src: 'src/less/styles.less',
@@ -33,12 +32,10 @@ const paths = {
   }
 };
 
-// Limpia la carpeta dist
 function clean() {
   return del(['dist']);
 }
 
-// Compila LESS
 function styles() {
   return gulp
     .src(paths.styles.src)
@@ -49,12 +46,10 @@ function styles() {
     .pipe(browserSync.stream());
 }
 
-// Compila Handlebars a funciones JS
 const merge = require('merge-stream');
 
 function templates() {
 
-  // 🔹 COMPONENTS → partials
   const components = gulp
     .src('src/components/**/*.hbs')
     .pipe(handlebars())
@@ -73,7 +68,6 @@ function templates() {
       `;
     }));
 
-  // 🔹 TEMPLATES → templates principales
   const templates = gulp
     .src('src/templates/**/*.hbs')
     .pipe(handlebars())
@@ -90,37 +84,30 @@ function templates() {
       `;
     }));
 
-  // 🔹 Unimos ambos streams
   return merge(components, templates)
   .pipe(concat('templates.js'))
   .pipe(gulp.dest('dist/js/'))
   .on('end', browserSync.reload);
 }
 
-
-
-// Copia JS
 function scripts() {
   return gulp.src(paths.scripts.src)
     .pipe(gulp.dest(paths.scripts.dest))
     .pipe(browserSync.stream());
 }
 
-// Copia HTML
 function html() {
   return gulp.src(paths.html.src)
     .pipe(gulp.dest(paths.html.dest))
     .pipe(browserSync.stream());
 }
 
-// Copia JSON
 function data() {
   return gulp.src(paths.data.src)
     .pipe(gulp.dest(paths.data.dest))
     .pipe(browserSync.stream());
 }
 
-// Servidor local + Watch
 function dev() {
   browserSync.init({
     server: {
